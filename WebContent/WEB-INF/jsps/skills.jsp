@@ -10,3 +10,5 @@
 	<p>Skill Category: <c:out value="${skill.category}"></c:out><p/>
 	<p>Skill Priority: <c:out value="${skill.priority}"></c:out><p/>
 </c:forEach>
+
+<c:import url="footer.jsp" />

@@ -9,6 +9,8 @@ public interface SkillDAO {
 	public Skill getSkill(int id);
 	
 	public List<Skill> getSkills();
+
+	public int addSkill(Skill skill);
 	
 	
 }

@@ -9,5 +9,7 @@ public interface SkillService {
 	public Skill getSkill(int id);
 	
 	public List<Skill> getSkills();
+
+	public boolean addSkill(Skill skill);
 	
 }

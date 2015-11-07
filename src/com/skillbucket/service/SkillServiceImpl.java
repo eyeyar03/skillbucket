@@ -18,7 +18,7 @@ public class SkillServiceImpl implements SkillService{
 	public void setSkillDao(SkillDAOImpl skillDao) {
 		this.skillDao = skillDao;
 	}
-
+	
 	@Override
 	public Skill getSkill(int id) {
 		return skillDao.getSkill(id);
@@ -27,6 +27,12 @@ public class SkillServiceImpl implements SkillService{
 	@Override
 	public List<Skill> getSkills() {
 		return skillDao.getSkills();
+	}
+
+	@Override
+	public boolean addSkill(Skill skill) {
+		int added = skillDao.addSkill(skill);
+		return added == 1;
 	}
 
 }

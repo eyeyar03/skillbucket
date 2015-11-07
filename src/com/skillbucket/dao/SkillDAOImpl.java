@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -37,12 +38,10 @@ public class SkillDAOImpl implements SkillDAO {
 				skill.setName(rs.getString("name"));
 				skill.setLevel(rs.getString("level"));
 				skill.setCategory(rs.getString("category"));
-				
+
 				return skill;
 			}
-			
 		});
-		
 		return skill;
 	}
 
@@ -61,9 +60,18 @@ public class SkillDAOImpl implements SkillDAO {
 				skill.setPriority(rs.getInt("priority"));
 				return skill;
 			}
-			
 		});
+	}
+
+	@Override
+	public int addSkill(Skill skill) {
 		
+		//TODO Add checking if skill already exists for the user
+		skill.setUserId(1); //TODO temporary
+		
+		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(skill);
+		
+		return jdbc.update("insert into skill (name, level, category, priority, user_id) values (:name, :level, :category, :priority)", params);
 	}
 
 }

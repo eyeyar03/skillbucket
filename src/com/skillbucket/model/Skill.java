@@ -1,12 +1,28 @@
 package com.skillbucket.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Skill {
 
 	private int id;
+	
+	@NotNull
+	@Size(min=1, max=100, message="Skill name must be a maximum of 100 characters")
 	private String name;
+	
+	@NotNull
 	private String level;
+	
+	@NotNull
 	private String category;
+	
+	@NotNull
+	@Min(value=1, message="Highest priority rank is 1.")
 	private int priority;
+	
+	private int userId;
 	
 	public Skill() {
 	}
@@ -32,6 +48,7 @@ public class Skill {
 
 	public void setName(String name) {
 		this.name = name;
+		System.out.println("Name length is " + name.length());
 	}
 
 	public String getLevel() {
@@ -56,6 +73,14 @@ public class Skill {
 
 	public void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@Override
