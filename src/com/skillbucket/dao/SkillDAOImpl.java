@@ -66,12 +66,9 @@ public class SkillDAOImpl implements SkillDAO {
 	@Override
 	public int addSkill(Skill skill) {
 		
-		//TODO Add checking if skill already exists for the user
-		skill.setUserId(1); //TODO temporary
-		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(skill);
 		
-		return jdbc.update("insert into skill (name, level, category, priority, user_id) values (:name, :level, :category, :priority)", params);
+		return jdbc.update("insert into skill (name, level, category, priority) values (:name, :level, :category, :priority)", params);
 	}
 
 }
