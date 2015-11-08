@@ -39,8 +39,10 @@ Thumbs.db
 ##spring
 .springBeans
 spring-test/test-output/
+target/*
 
 # Eclipse artifacts, including WTP generated manifests
 .classpath
 .project
 spring-*/src/main/java/META-INF/MANIFEST.MF
+.settings/*
