@@ -49,7 +49,7 @@ public class SkillController {
 		return "addskill";
 	}
 	
-	@RequestMapping(value="/doaddskill", method=RequestMethod.POST)
+	@RequestMapping( value = "/doaddskill", method = RequestMethod.POST )
 	public ModelAndView doAddSkill(ModelAndView mv, @Valid @ModelAttribute("skill") Skill skill, BindingResult result) {
 		System.out.println(skill);
 		

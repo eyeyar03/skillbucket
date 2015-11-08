@@ -22,8 +22,6 @@ public class Skill {
 	@Min(value=1, message="Highest priority rank is 1.")
 	private int priority;
 	
-	private int userId;
-	
 	public Skill() {
 	}
 
@@ -48,7 +46,6 @@ public class Skill {
 
 	public void setName(String name) {
 		this.name = name;
-		System.out.println("Name length is " + name.length());
 	}
 
 	public String getLevel() {
@@ -73,14 +70,6 @@ public class Skill {
 
 	public void setPriority(int priority) {
 		this.priority = priority;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 
 	@Override
