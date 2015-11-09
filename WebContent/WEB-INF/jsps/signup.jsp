@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Log in - Skill Bucket</title>
+<title>Sign up - Skill Bucket</title>
 
 <link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet">
 <link href="<c:url value='resources/css/main.css'/>" rel="stylesheet">
@@ -36,42 +36,49 @@
 					<li class="active"><a href="<c:url value='/'/>">Home</a></li>
 					<li><a href="#about">About</a></li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="<c:url value="/login"/>">Have an account? Log in</a></li>
+				</ul>
 			</div>
 		</div>
 		</nav>
 	</div>
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6 jumbotron">
+			<p class="lead">Join Skill Bucket today.</p>
+			<c:url value="/dosignup" var="doSignUpUrl"/>
+			<sf:form modelAttribute="user" method="post" action="${doSignUpUrl}"
+				class="form-horizontal" role="form">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<sf:input type="text" name="username" path="username" class="form-control" 
+						placeholder="Username" required="required"/>
+						<sf:errors path="username" cssClass="alert-danger"></sf:errors>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<sf:input type="password" name="password" path="password" class="form-control" 
+						placeholder="Password" required="required"/>
+						<sf:errors path="password" cssClass="alert-danger"></sf:errors>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="password" class="form-control" name="confirmpassword"
+							placeholder="Confirm password" required/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<button type="submit" class="btn btn-primary btn-md btn-block">
+							Create Account</button>
+					</div>
+       			</div>
+		      
+			</sf:form>
+		</div> <!-- .jumbotron -->
 
-<div class="row">
-	<div class="col-sm-offset-3 col-sm-6 jumbotron">
-		<p class="lead">Log in to Skill Bucket</p>
-		<c:if test="${param.error != null}">
-			<div class="alert alert-danger">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Oops!</strong> There was a problem logging in.
-			</div>
-		</c:if>
-		<form class="form-horizontal" name="f"
-			action="<c:url value='/login'/>" method='POST' role="form">
-			<div class="form-group">
-				<div class="col-sm-12">
-					<input type="text" class="form-control" name="username" placeholder="Username">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-12">
-					<input type="password" class="form-control" name="password" placeholder="Password">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-12">
-					<button type="submit" class="btn btn-primary btn-md btn-block">Log
-						in</button>
-				</div>
-			</div>
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		</form>
-		<div class="text-center"><a href='<c:url value="/signup"/>'>Create account</a></div>
-	</div>
-</div>
+</div> <!-- .row -->
 
 <c:import url="footer.jsp" />

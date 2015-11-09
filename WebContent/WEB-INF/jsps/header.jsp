@@ -4,32 +4,52 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>${param.title}</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    
-	<!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+<title>${param.title}</title>
+
+<link href='<c:url value="/resources/css/bootstrap.min.css"/>'
+	rel="stylesheet">
+<link href="<c:url value='resources/css/main.css'/>" rel="stylesheet">
 
 </head>
 <body>
-	
-	<div class="container-fluid">
-	
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Login</a></li>
-            <li role="presentation"><a href="#">Sign up</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Skill Bucket</h3>
-      </div>
-      
-</body>
-</html>
+
+	<div class="container">
+		<div class="header clearfix">
+			<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="<c:url value='/'/>">Skill Bucket</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active" id="nav-home-label"><a href="<c:url value='/'/>">Home</a></li>
+						<li id="nav-skills-label"><a href="<c:url value='/skills'/>">Skills</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li role="presentation" class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"
+							role="button" aria-haspopup="true" aria-expanded="false">
+								<c:out value="username"></c:out><span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="<c:url value='/accountsettings'/>">My Account</a></li>
+								<li><a href="<c:url value='/logout'/>">Log out</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			</nav>
+
+		</div>

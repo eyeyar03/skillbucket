@@ -1,52 +1,34 @@
 package com.skillbucket.model;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 @Component
 public class User {
 
-	private int id;
-	private String name;
-	private String email;
+	private String username;
 	private String password;
+	private boolean enabled = false;
+	private String authority;
 	private String title;
-	private List<Skill> skillSet;
 
 	public User() {
 
 	}
 
-	public User(String name, String email, String password, String title) {
-		this.name = name;
-		this.email = email;
+	public User(String username, String password, boolean enabled, String authority, String title) {
+		this.username = username;
 		this.password = password;
+		this.enabled = enabled;
+		this.authority = authority;
 		this.title = title;
 	}
 
-	public int getId() {
-		return id;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -57,6 +39,22 @@ public class User {
 		this.password = password;
 	}
 
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -65,18 +63,10 @@ public class User {
 		this.title = title;
 	}
 
-	public List<Skill> getSkillSet() {
-		return skillSet;
-	}
-
-	public void setSkillSet(List<Skill> skillSet) {
-		this.skillSet = skillSet;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", title=" + title
-				+ "]";
+		return "User [username=" + username + ", password=" + password + ", enabled=" + enabled + ", authority="
+				+ authority + ", title=" + title + "]";
 	}
-	
+
 }

@@ -2,13 +2,12 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 <c:import url="header.jsp">
-	<c:param name="title">Add Skill</c:param>
+	<c:param name="title">Add Skill - Skill Bucket</c:param>
 </c:import>
 
 <div class="row">
-	<div class="col-sm-3"></div>
 
-	<div class="col-sm-6 jumbotron">
+	<div class="col-sm-offset-3 col-sm-6 jumbotron">
 		<c:if test="${errorMsg!=''}">
 			<div class="alert alert-danger">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -22,7 +21,7 @@
 			</div>
 		</c:if>
 
-		<sf:form modelAttribute="skill" method="post" action="${pageContext.request.contextPath}/doaddskill"
+		<sf:form modelAttribute="skill" method="post" action="<c:url value='/doaddskill'/>"
 			class="form-horizontal" role="form">
 
 			<div class="form-group">
@@ -67,14 +66,13 @@
 			</div>
 
 			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Add Skill</button>
+				<div class="col-sm-12">
+					<button type="submit" class="btn btn-primary btn-md btn-block">
+						Add Skill</button>
 				</div>
-			</div>
+       		</div>
 		</sf:form>
 	</div> <!-- .col-sm-6 -->
-
-	<div class="col-sm-3"></div>
 
 </div> <!-- .row -->
 
