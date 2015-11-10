@@ -22,6 +22,8 @@ public class Skill {
 	@Min(value=1, message="Highest priority rank is 1.")
 	private int priority;
 	
+	private String username;
+	
 	public Skill() {
 	}
 
@@ -72,10 +74,18 @@ public class Skill {
 		this.priority = priority;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	@Override
 	public String toString() {
 		return "Skill [id=" + id + ", name=" + name + ", level=" + level + ", category=" + category + ", priority="
-				+ priority + "]";
+				+ priority + ", username=" + username + "]";
 	}
 	
 }

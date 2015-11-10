@@ -2,9 +2,12 @@ package com.skillbucket.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,9 +32,14 @@ public class SkillController {
 	}
 	
 	@RequestMapping("/skills")
-	public String showSkills(Model model) {
+	public String showSkills(Model model, HttpSession session) {
 		
-		List<Skill> skills = skillService.getSkills();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName(); //get logged in username
+	    session.setAttribute("username", username);
+	    System.out.println("Logged in username : " + username);
+	    
+		List<Skill> skills = skillService.getSkills(username);
 
 		model.addAttribute("skills", skills);
 		
@@ -50,7 +58,7 @@ public class SkillController {
 	}
 	
 	@RequestMapping( value = "/doaddskill", method = RequestMethod.POST )
-	public ModelAndView doAddSkill(ModelAndView mv, @Valid @ModelAttribute("skill") Skill skill, BindingResult result) {
+	public ModelAndView doAddSkill(ModelAndView mv, HttpSession session, @Valid @ModelAttribute("skill") Skill skill, BindingResult result) {
 		System.out.println(skill);
 		
 		mv = new ModelAndView("addskill");
@@ -61,8 +69,8 @@ public class SkillController {
 			System.out.println("Form does not validate.");
 		} else {
 			System.out.println("Form validated.");
-			
-			boolean added = skillService.add(skill);
+
+			boolean added = skillService.add(skill, (String) session.getAttribute("username"));
 			if (added) {
 				successMsg = "Your skill is added to your skill set.";
 				mv.getModel().put("skill", new Skill());
@@ -77,6 +85,5 @@ public class SkillController {
 		
 		return mv;
 	}
-
 
 }

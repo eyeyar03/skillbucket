@@ -18,19 +18,15 @@ public class SkillServiceImpl implements SkillService{
 	public void setSkillDao(SkillDaoImpl skillDao) {
 		this.skillDao = skillDao;
 	}
-	
+
 	@Override
-	public Skill getSkill(int id) {
-		return skillDao.getSkill(id);
+	public List<Skill> getSkills(String username) {
+		return skillDao.getSkills(username);
 	}
 
 	@Override
-	public List<Skill> getSkills() {
-		return skillDao.getSkills();
-	}
-
-	@Override
-	public boolean add(Skill skill) {
+	public boolean add(Skill skill, String username) {
+		skill.setUsername(username);
 		int added = skillDao.add(skill);
 		return added == 1;
 	}

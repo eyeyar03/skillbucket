@@ -6,7 +6,7 @@
 
 <div class="row">
 
-	<div class="col-sm-offset- col-sm-8 alert alert-danger">
+	<div class="col-sm-offset-2 col-sm-8">
 
 		<div class="panel panel-danger">
 			<div class="panel-heading">

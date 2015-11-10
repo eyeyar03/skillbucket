@@ -5,10 +5,8 @@ import java.util.List;
 import com.skillbucket.model.Skill;
 
 public interface SkillDao {
-	
-	public Skill getSkill(int id);
-	
-	public List<Skill> getSkills();
+		
+	public List<Skill> getSkills(String username);
 
 	public int add(Skill skill);
 	

@@ -26,29 +26,10 @@ public class SkillDaoImpl implements SkillDao {
 	}
 
 	@Override
-	public Skill getSkill(int id) {
+	public List<Skill> getSkills(String username) {
+		MapSqlParameterSource params = new MapSqlParameterSource("username", username);
 		
-		MapSqlParameterSource params = new MapSqlParameterSource("id", id);
-		
-		Skill skill = (Skill) jdbc.queryForObject("select name, level, category from skill where id=:id", params, new RowMapper<Skill>() {
-
-			@Override
-			public Skill mapRow(ResultSet rs, int arg1) throws SQLException {
-				Skill skill = new Skill();
-				skill.setName(rs.getString("name"));
-				skill.setLevel(rs.getString("level"));
-				skill.setCategory(rs.getString("category"));
-
-				return skill;
-			}
-		});
-		return skill;
-	}
-
-	@Override
-	public List<Skill> getSkills() {
-		
-		return jdbc.query("select * from skill", new RowMapper<Skill>() {
+		return jdbc.query("select * from skill where username = :username", params, new RowMapper<Skill>() {
 
 			@Override
 			public Skill mapRow(ResultSet rs, int arg1) throws SQLException {
@@ -58,6 +39,7 @@ public class SkillDaoImpl implements SkillDao {
 				skill.setLevel(rs.getString("level"));
 				skill.setCategory(rs.getString("category"));
 				skill.setPriority(rs.getInt("priority"));
+				skill.setUsername(rs.getString("username"));
 				return skill;
 			}
 		});
@@ -68,7 +50,7 @@ public class SkillDaoImpl implements SkillDao {
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(skill);
 		
-		return jdbc.update("insert into skill (name, level, category, priority) values (:name, :level, :category, :priority)", params);
+		return jdbc.update("insert into skill (name, level, category, priority, username) values (:name, :level, :category, :priority, :username)", params);
 	}
 
 }

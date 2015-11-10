@@ -40,7 +40,7 @@
 						<li role="presentation" class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#"
 							role="button" aria-haspopup="true" aria-expanded="false">
-								<c:out value="username"></c:out><span class="caret"></span>
+								<c:out value="${username}"></c:out><span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="<c:url value='/accountsettings'/>">My Account</a></li>

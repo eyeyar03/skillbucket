@@ -21,7 +21,8 @@
 			</div>
 		</c:if>
 
-		<sf:form modelAttribute="skill" method="post" action="<c:url value='/doaddskill'/>"
+		<c:url value='/doaddskill' var="doAddSkillUrl"/>
+		<sf:form modelAttribute="skill" method="post" action="${doAddSkillUrl}"
 			class="form-horizontal" role="form">
 
 			<div class="form-group">

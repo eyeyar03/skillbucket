@@ -6,10 +6,8 @@ import com.skillbucket.model.Skill;
 
 public interface SkillService {
 
-	public Skill getSkill(int id);
-	
-	public List<Skill> getSkills();
+	public List<Skill> getSkills(String username);
 
-	public boolean add(Skill skill);
+	public boolean add(Skill skill, String username);
 	
 }
