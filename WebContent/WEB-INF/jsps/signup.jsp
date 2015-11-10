@@ -12,7 +12,7 @@
 <title>Sign up - Skill Bucket</title>
 
 <link href='<c:url value="/resources/css/bootstrap.min.css"/>' rel="stylesheet">
-<link href="<c:url value='resources/css/main.css'/>" rel="stylesheet">
+<link href="<c:url value='/resources/css/main.css'/>" rel="stylesheet">
 
 </head>
 <body>
@@ -45,7 +45,13 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-offset-3 col-sm-6 jumbotron">
-			<p class="lead">Join Skill Bucket today.</p>
+				<c:if test="${errorMsg != null}">
+					<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Oops!</strong> <c:out value="${errorMsg}" /> 
+					</div>
+				</c:if>
+				<p class="lead">Join Skill Bucket today.</p>
 			<c:url value="/dosignup" var="doSignUpUrl"/>
 			<sf:form modelAttribute="user" method="post" action="${doSignUpUrl}"
 				class="form-horizontal" role="form">

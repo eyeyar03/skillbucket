@@ -39,17 +39,23 @@ public class LoginController {
 	}
 
 	@RequestMapping( value = "/dosignup", method = RequestMethod.POST )
-	public String doCreateAccount(@Valid @ModelAttribute("user") User user, BindingResult result ) {
+	public String doCreateAccount(@Valid @ModelAttribute("user") User user, BindingResult result, Model model ) {
 
 		if (result.hasErrors()) {
 			return "signup";
 		}
 		
-		if (usersService.add(user)) {
-			return "accountcreated";
+		if (usersService.exists(user.getUsername())) {
+			result.rejectValue("username", "DuplicateKey.user.username", "This username is already taken. Please choose a different one.");
+			return "signup";
 		} 
 		
-		return "signup";
+		if (!usersService.add(user)) {
+			model.addAttribute("errorMsg", "There was an error creating your account. Please try again.");
+			return "signup";
+		}
+		
+		return "accountcreated";
 	}
 	
 }

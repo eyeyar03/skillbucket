@@ -1,6 +1,7 @@
 package com.skillbucket.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.skillbucket.dao.UsersDao;
@@ -21,10 +22,21 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public boolean add(User user) {
 		
-		user.setAuthority(Constants.USER);
-		user.setEnabled(true);
+		try {
+			user.setAuthority(Constants.USER);
+			user.setEnabled(true);
 		
-		return usersDao.add(user);
+			usersDao.add(user);
+		} catch (DataAccessException e) {
+			return false;
+		}
+		
+		return true;
+	}
+
+	@Override
+	public boolean exists(String username) {
+		return usersDao.exists(username);
 	}
 	
 }

@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +30,11 @@ public class UsersDaoImpl implements UsersDao {
 		jdbc.update("insert into users (username, password, email, first_name, last_name, enabled, title) values (:username, :password, :email, :firstName, :lastName, :enabled, :title)", params);
 		
 		return jdbc.update("insert into authorities (username, authority) values (:username, :authority)", params) == 1;
+	}
+
+	@Override
+	public boolean exists(String username) {
+		return jdbc.queryForObject("select count(*) from users where username = :username", new MapSqlParameterSource("username", username), Integer.class) > 0;
 	}
 
 }

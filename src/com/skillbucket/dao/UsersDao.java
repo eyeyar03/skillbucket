@@ -6,4 +6,6 @@ public interface UsersDao {
 	
 	public boolean add(User user);
 
+	public boolean exists(String username);
+
 }
