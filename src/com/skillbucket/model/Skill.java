@@ -1,25 +1,26 @@
 package com.skillbucket.model;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 public class Skill {
 
 	private int id;
 	
-	@NotNull
-	@Size(min=1, max=100, message="Skill name must be a maximum of 100 characters")
+	@NotBlank
+	@Size(min=1, max=100)
 	private String name;
 	
-	@NotNull
+	@NotBlank
 	private String level;
 	
-	@NotNull
+	@NotBlank
 	private String category;
 	
-	@NotNull
-	@Min(value=1, message="Highest priority rank is 1.")
+	@NotBlank
+	@Min(value=1)
 	private int priority;
 	
 	private String username;

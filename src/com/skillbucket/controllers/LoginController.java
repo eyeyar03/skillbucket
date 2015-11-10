@@ -46,10 +46,10 @@ public class LoginController {
 		}
 		
 		if (usersService.exists(user.getUsername())) {
-			result.rejectValue("username", "DuplicateKey.user.username", "This username is already taken. Please choose a different one.");
+			result.rejectValue("username", "DuplicateKey.user.username");
 			return "signup";
 		} 
-		
+
 		if (!usersService.add(user)) {
 			model.addAttribute("errorMsg", "There was an error creating your account. Please try again.");
 			return "signup";

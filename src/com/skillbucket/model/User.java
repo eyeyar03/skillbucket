@@ -10,24 +10,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
 
-	@NotBlank(message="Username cannot be blank.")
-	@Size(min=8, max=15, message="Username must be between 8 and 15 characters long.")
-	@Pattern(regexp="^\\w{8,}$", message="Username must only consist of numbers, letters and the underscore.")
+	@NotBlank
+	@Size(min=8, max=15)
+	@Pattern(regexp="^\\w{8,}$")
 	private String username;
 	
-	@NotBlank(message="Password cannot be blank.")
-	@Size(min=8, message="Password must be a minimum of 8 characters.")
-	@Pattern(regexp="^\\S+$", message="Password must contain spaces.")
+	@NotBlank
+	@Size(min=8)
+	@Pattern(regexp="^\\S+$")
 	private String password;
 	
-	@NotBlank(message="Email cannot be blank.")
-	@Email(message="Please enter a valid email address.")
+	@NotBlank
+	@Email
 	private String email;
 	
-	@NotBlank(message="First name cannot be blank.")
+	@NotBlank
 	private String firstName;
 
-	@NotBlank(message="Last name cannot be blank.")
+	@NotBlank
 	private String lastName;
 
 	private String title;
