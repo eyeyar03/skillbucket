@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import com.skillbucket.model.Skill;
 
 @Component("skillDao")
-public class SkillDAOImpl implements SkillDAO {
+public class SkillDaoImpl implements SkillDao {
 	
 	private NamedParameterJdbcTemplate jdbc;
 	
@@ -64,7 +64,7 @@ public class SkillDAOImpl implements SkillDAO {
 	}
 
 	@Override
-	public int addSkill(Skill skill) {
+	public int add(Skill skill) {
 		
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(skill);
 		

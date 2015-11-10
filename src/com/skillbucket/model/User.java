@@ -7,20 +7,25 @@ public class User {
 
 	private String username;
 	private String password;
-	private boolean enabled = false;
+	private String email;
 	private String authority;
+	private boolean enabled = false;
+	private String firstName;
+	private String lastName;
 	private String title;
 
 	public User() {
 
 	}
 
-	public User(String username, String password, boolean enabled, String authority, String title) {
+	public User(String username, String password, String authority, boolean enabled, String firstName,
+			String lastName) {
 		this.username = username;
 		this.password = password;
-		this.enabled = enabled;
 		this.authority = authority;
-		this.title = title;
+		this.enabled = enabled;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
 	public String getUsername() {
@@ -39,12 +44,12 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getAuthority() {
@@ -53,6 +58,30 @@ public class User {
 
 	public void setAuthority(String authority) {
 		this.authority = authority;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getTitle() {
@@ -65,8 +94,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", enabled=" + enabled + ", authority="
-				+ authority + ", title=" + title + "]";
+		return "User [username=" + username + ", password=" + password + ", email=" + email + ", authority=" + authority
+				+ ", enabled=" + enabled + ", firstName=" + firstName + ", lastName=" + lastName + ", title=" + title
+				+ "]";
 	}
 
 }

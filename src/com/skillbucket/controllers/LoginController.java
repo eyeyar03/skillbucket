@@ -1,15 +1,27 @@
 package com.skillbucket.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skillbucket.model.User;
+import com.skillbucket.service.UsersService;
+import com.skillbucket.service.UsersServiceImpl;
 
 @Controller
 public class LoginController {
-
+	
+	private UsersService usersService;
+	
+	@Autowired
+	private void setUsersService(UsersServiceImpl usersService) {
+		this.usersService = usersService;
+	}
+	
 	@RequestMapping( value = "/login", method = RequestMethod.GET )
 	public String showLogin() {
 
@@ -25,9 +37,15 @@ public class LoginController {
 	}
 
 	@RequestMapping( value = "/dosignup", method = RequestMethod.POST )
-	public String doCreateAccount() {
+	public String doCreateAccount( @ModelAttribute("user") User user, BindingResult result ) {
 
+		if (result.hasErrors()) {
+			return "signup";
+		}
+		
+		usersService.add(user);
+		
 		return "accountcreated";
 	}
-
+	
 }

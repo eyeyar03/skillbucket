@@ -51,6 +51,34 @@
 				class="form-horizontal" role="form">
 				<div class="form-group">
 					<div class="col-sm-12">
+						<sf:input type="text" name="firstName" path="firstName" class="form-control" 
+						placeholder="First Name" required="required"/>
+						<sf:errors path="firstName" cssClass="alert-danger"></sf:errors>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<sf:input type="text" name="lastName" path="lastName" class="form-control" 
+						placeholder="Last Name" required="required"/>
+						<sf:errors path="lastName" cssClass="alert-danger"></sf:errors>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<sf:input type="text" name="title" path="title" class="form-control" 
+						placeholder="Title (e.g., Engineer, Student, Chef)" required="required"/>
+						<sf:errors path="title" cssClass="alert-danger"></sf:errors>
+					</div>
+				</div>				
+				<div class="form-group">
+					<div class="col-sm-12">
+						<sf:input type="text" name="email" path="email" class="form-control" 
+						placeholder="Email address" required="required"/>
+						<sf:errors path="email" cssClass="alert-danger"></sf:errors>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
 						<sf:input type="text" name="username" path="username" class="form-control" 
 						placeholder="Username" required="required"/>
 						<sf:errors path="username" cssClass="alert-danger"></sf:errors>

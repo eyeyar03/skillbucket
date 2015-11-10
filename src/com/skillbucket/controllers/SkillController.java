@@ -42,7 +42,7 @@ public class SkillController {
 	public String addSkill(Model model) {
 		
 		model.addAttribute("skill", new Skill());
-		model.addAttribute("levels", Constants.levels);
+		model.addAttribute("levels", Constants.LEVELS);
 		model.addAttribute("errorMsg", "");
 		model.addAttribute("successMsg", "");
 		
@@ -62,7 +62,7 @@ public class SkillController {
 		} else {
 			System.out.println("Form validated.");
 			
-			boolean added = skillService.addSkill(skill);
+			boolean added = skillService.add(skill);
 			if (added) {
 				successMsg = "Your skill is added to your skill set.";
 				mv.getModel().put("skill", new Skill());
@@ -73,7 +73,7 @@ public class SkillController {
 		
 		mv.getModel().put("errorMsg", errorMsg);
 		mv.getModel().put("successMsg", successMsg);
-		mv.getModel().put("levels", Constants.levels);
+		mv.getModel().put("levels", Constants.LEVELS);
 		
 		return mv;
 	}

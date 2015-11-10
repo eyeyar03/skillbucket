@@ -4,13 +4,13 @@ import java.util.List;
 
 import com.skillbucket.model.Skill;
 
-public interface SkillDAO {
+public interface SkillDao {
 	
 	public Skill getSkill(int id);
 	
 	public List<Skill> getSkills();
 
-	public int addSkill(Skill skill);
+	public int add(Skill skill);
 	
 	
 }

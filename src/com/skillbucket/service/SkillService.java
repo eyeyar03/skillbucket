@@ -10,6 +10,6 @@ public interface SkillService {
 	
 	public List<Skill> getSkills();
 
-	public boolean addSkill(Skill skill);
+	public boolean add(Skill skill);
 	
 }

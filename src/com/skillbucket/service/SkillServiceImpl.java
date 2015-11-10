@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skillbucket.dao.SkillDAO;
-import com.skillbucket.dao.SkillDAOImpl;
+import com.skillbucket.dao.SkillDao;
+import com.skillbucket.dao.SkillDaoImpl;
 import com.skillbucket.model.Skill;
 
 @Service("skillService")
 public class SkillServiceImpl implements SkillService{
 	
-	private SkillDAO skillDao;
+	private SkillDao skillDao;
 	
 	@Autowired
-	public void setSkillDao(SkillDAOImpl skillDao) {
+	public void setSkillDao(SkillDaoImpl skillDao) {
 		this.skillDao = skillDao;
 	}
 	
@@ -30,8 +30,8 @@ public class SkillServiceImpl implements SkillService{
 	}
 
 	@Override
-	public boolean addSkill(Skill skill) {
-		int added = skillDao.addSkill(skill);
+	public boolean add(Skill skill) {
+		int added = skillDao.add(skill);
 		return added == 1;
 	}
 
