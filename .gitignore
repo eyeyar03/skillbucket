@@ -46,3 +46,4 @@ target/*
 .project
 spring-*/src/main/java/META-INF/MANIFEST.MF
 .settings/*
+/build/
