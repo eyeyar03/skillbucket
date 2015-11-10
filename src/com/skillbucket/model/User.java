@@ -1,18 +1,38 @@
 package com.skillbucket.model;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Component
 public class User {
 
+	@NotBlank(message="Username cannot be blank.")
+	@Size(min=8, max=15, message="Username must be between 8 and 15 characters long.")
+	@Pattern(regexp="^\\w{8,}$", message="Username must only consist of numbers, letters and the underscore.")
 	private String username;
+	
+	@NotBlank(message="Password cannot be blank.")
+	@Size(min=8, message="Password must be a minimum of 8 characters.")
+	@Pattern(regexp="^\\S+$", message="Password must contain spaces.")
 	private String password;
+	
+	@NotBlank(message="Email cannot be blank.")
+	@Email(message="Please enter a valid email address.")
 	private String email;
+	
+	@NotBlank(message="First name cannot be blank.")
+	private String firstName;
+
+	@NotBlank(message="Last name cannot be blank.")
+	private String lastName;
+
+	private String title;
 	private String authority;
 	private boolean enabled = false;
-	private String firstName;
-	private String lastName;
-	private String title;
 
 	public User() {
 

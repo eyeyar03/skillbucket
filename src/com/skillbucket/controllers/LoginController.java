@@ -1,5 +1,7 @@
 package com.skillbucket.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,15 +39,17 @@ public class LoginController {
 	}
 
 	@RequestMapping( value = "/dosignup", method = RequestMethod.POST )
-	public String doCreateAccount( @ModelAttribute("user") User user, BindingResult result ) {
+	public String doCreateAccount(@Valid @ModelAttribute("user") User user, BindingResult result ) {
 
 		if (result.hasErrors()) {
 			return "signup";
 		}
 		
-		usersService.add(user);
+		if (usersService.add(user)) {
+			return "accountcreated";
+		} 
 		
-		return "accountcreated";
+		return "signup";
 	}
 	
 }
