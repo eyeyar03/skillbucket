@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,27 +21,27 @@
 <div class="container">
 	<div class="header clearfix">
 		<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="<c:url value='/'/>">Skill Bucket</a>
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="<c:url value='/'/>">Skill Bucket</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="<c:url value='/'/>">Home</a></li>
+						<li><a href="#about">About</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="<c:url value="/login"/>">Have an account? Log in</a></li>
+					</ul>
+				</div>
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="<c:url value='/'/>">Home</a></li>
-					<li><a href="#about">About</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="<c:url value="/login"/>">Have an account? Log in</a></li>
-				</ul>
-			</div>
-		</div>
 		</nav>
 	</div>
 	<div class="row">
@@ -53,7 +54,7 @@
 				</c:if>
 				<p class="lead">Join Skill Bucket today.</p>
 			<c:url value="/dosignup" var="doSignUpUrl"/>
-			<sf:form modelAttribute="user" method="post" action="${doSignUpUrl}"
+			<sf:form id="signupform" modelAttribute="user" method="post" action="${doSignUpUrl}"
 				class="form-horizontal" role="form">
 				<div class="form-group">
 					<div class="col-sm-12">
@@ -92,27 +93,34 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<sf:input type="password" name="password" path="password" class="form-control" 
+						<sf:input type="password" id="password" name="password" path="password" class="form-control" 
 						placeholder="Password" required="required"/>
 						<sf:errors path="password" cssClass="alert-danger"></sf:errors>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="password" class="form-control" name="confirmpassword"
+						<input type="password" class="form-control" id="confirmpassword" name="confirmpassword"
 							placeholder="Confirm password" required/>
+						<input type="hidden" id="matchedMsg" value="<fmt:message key='Matchedpasswords.user.password' />">
+						<input type="hidden" id="unmatchedMsg" value="<fmt:message key='Unmatchedpasswords.user.password' />">
+						<div id="passwordmatch"></div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<button type="submit" class="btn btn-primary btn-md btn-block">
+						<button type="submit" class="btn btn-success btn-md btn-block">
 							Create Account</button>
 					</div>
        			</div>
-		      
 			</sf:form>
 		</div> <!-- .jumbotron -->
+	</div> <!-- .row -->
+</div> <!-- .container -->
 
-</div> <!-- .row -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="<c:url value='/resources/js/bootstrap.min.js'/>" ></script>
+<script src='<c:url value="/resources/js/signup.js" />'></script>
 
-<c:import url="footer.jsp" />
+</body>
+</html>
