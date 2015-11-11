@@ -30,6 +30,11 @@ public class LoginController {
 		return "login";
 	}
 
+	@RequestMapping( value = "/logout", method = RequestMethod.GET )
+	public String doLogout() {
+		return "home";
+	}
+
 	@RequestMapping( value = "/signup", method = RequestMethod.GET )
 	public String showCreateAccount(Model model) {
 

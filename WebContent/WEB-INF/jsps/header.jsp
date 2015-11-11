@@ -44,7 +44,13 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="<c:url value='/accountsettings'/>">My Account</a></li>
-								<li><a href="<c:url value='/logout'/>">Log out</a></li>
+								<li>
+									<c:url var="logoutUrl" value="/logout" />
+									<form action="${logoutUrl}" method="post" id="logoutForm">
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									</form>
+									<a href="#" id="logoutLink">Logout</a>
+								</li>
 							</ul>
 						</li>
 					</ul>
@@ -53,3 +59,6 @@
 			</nav>
 
 		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src='<c:url value="/resources/js/header.js" />'></script>

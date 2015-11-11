@@ -24,6 +24,7 @@
 		<security:intercept-url pattern="/skills" access="isAuthenticated()" />
 		<security:intercept-url pattern="/addskill" access="isAuthenticated()" />
 		<security:intercept-url pattern="/doaddskill" access="isAuthenticated()" />
+		<security:intercept-url pattern="/logout" access="permitAll" />
 		<security:intercept-url pattern="/error" access="permitAll" />
 		<security:intercept-url pattern="/accountcreated" access="permitAll" />
 		<security:intercept-url pattern="/dosignup" access="permitAll" />
@@ -35,6 +36,7 @@
 		<security:form-login login-page="/login"
 			authentication-failure-url="/login?error=true" default-target-url='/skills' 
 			always-use-default-target="true" password-parameter="password" username-parameter="username" />
-		
+		<security:logout invalidate-session="true" logout-url="/logout"
+			logout-success-url="/" delete-cookies="JSESSIONID" />
 	</security:http>
 </beans>
