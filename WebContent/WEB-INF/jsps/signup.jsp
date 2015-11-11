@@ -102,8 +102,8 @@
 					<div class="col-sm-12">
 						<input type="password" class="form-control" id="confirmpassword" name="confirmpassword"
 							placeholder="Confirm password" required/>
-						<input type="hidden" id="matchedMsg" value="<fmt:message key='Matchedpasswords.user.password' />">
-						<input type="hidden" id="unmatchedMsg" value="<fmt:message key='Unmatchedpasswords.user.password' />">
+<%-- 						<input type="hidden" id="matchedMsg" value="<fmt:message key='Matchedpasswords.user.password' />"> --%>
+<%-- 						<input type="hidden" id="unmatchedMsg" value="<fmt:message key='Unmatchedpasswords.user.password' />"> --%>
 						<div id="passwordmatch"></div>
 					</div>
 				</div>
@@ -120,7 +120,61 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js'/>" ></script>
-<script src='<c:url value="/resources/js/signup.js" />'></script>
+<script type="text/javascript">
+function canSubmit() {
+	"use strict";
+	var signupPasswords = {
+			password: '$("#password").val()',
+			confirmpassword: '$("#confirmpassword").val()'
+	};
+	
+	if(signupPasswords.password !== signupPasswords.confirmpassword) {
+		alert("<fmt:message key='Matchedpasswords.user.password' />");
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function checkPasswordsMatch() {
+	"use strict";
+	var checkPasswords = {
+	    password: $('#password').val(),
+	    confirmpassword: $('#confirmpassword').val(),
+		messageDiv: $('#passwordmatch'),
+		checkGlyph: " <span class='glyphicon glyphicon-ok' aria-hidden='true'></span>",
+		timesGlyph: " <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>"
+	};
+	
+	if (checkPasswords.password.length < 1 || checkPasswords.confirmpassword < 1) {
+		checkPasswords.messageDiv.html("");
+		return;
+	}
+
+	if (checkPasswords.password.length > 3 || checkPasswords.confirmpassword.length > 3) {
+		
+		if (checkPasswords.password === checkPasswords.confirmpassword) {
+			checkPasswords.messageDiv.text("<fmt:message key='Matchedpasswords.user.password' />").append(checkPasswords.checkGlyph);
+			checkPasswords.messageDiv.addClass("alert-success");
+			checkPasswords.messageDiv.removeClass("alert-danger");
+		} else {
+			checkPasswords.messageDiv.text("<fmt:message key='Matchedpasswords.user.password' />").append(checkPasswords.timesGlyph);
+			checkPasswords.messageDiv.addClass("alert-danger");
+			checkPasswords.messageDiv.removeClass("alert-success");
+		}
+	}
+}
+
+function onLoad() {
+	"use strict";
+	$("#password").keyup(checkPasswordsMatch);
+	$("#confirmpassword").keyup(checkPasswordsMatch);
+	$("#signupform").submit(canSubmit);
+}
+
+$(document).ready(onLoad);
+
+</script>
 
 </body>
 </html>
