@@ -9,7 +9,7 @@
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:user-service>
-				<security:user name="angela" authorities="ROLE_USER, ROLE_ADMIN"
+				<security:user name="angela" authorities="ROLE_ADMIN"
 					password="password123" />
 				<security:user name="bernie" authorities="ROLE_USER"
 					password="iambernie" />
@@ -21,6 +21,7 @@
 	</security:authentication-manager>
 
 	<security:http use-expressions="true">
+		<security:intercept-url pattern="/admin" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/skills" access="isAuthenticated()" />
 		<security:intercept-url pattern="/addskill" access="isAuthenticated()" />
 		<security:intercept-url pattern="/doaddskill" access="isAuthenticated()" />
