@@ -12,8 +12,9 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">Error</h3>
 			</div>
-			<div class="panel-body">There seems to be a problem. The
-				database might be down. Please try again or come back later.</div>
+			<div class="panel-body">Woah! There seems to be a problem. We
+				are sorry for this inconvenience. Please try again or come back
+				later.</div>
 		</div>
 
 	</div>
