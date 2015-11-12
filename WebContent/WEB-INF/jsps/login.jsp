@@ -10,7 +10,7 @@
 		<c:if test="${param.error != null}">
 			<div class="alert alert-danger">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Oops!</strong> There was a problem logging in.
+				<strong>Oops!</strong> There was a problem logging in. Please check that your username and password are correct.
 			</div>
 		</c:if>
 		<form class="form-horizontal" name="f"
