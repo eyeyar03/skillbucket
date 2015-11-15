@@ -22,7 +22,7 @@
   </servlet-mapping>
   <resource-ref>
     <description>DB Connection</description>
-    <res-ref-name>jdbc/skillbucket</res-ref-name>
+    <res-ref-name>jdbc/MySQLDS</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
@@ -32,9 +32,9 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-  		classpath:com/skillbucket/beans/dao-context.xml
-  		classpath:com/skillbucket/beans/service-context.xml
-  		classpath:com/skillbucket/beans/security-context.xml
+  		/WEB-INF/dao-context.xml
+  		/WEB-INF/security-context.xml
+  		/WEB-INF/service-context.xml
   	</param-value>
   </context-param>
   <filter>
