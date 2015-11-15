@@ -19,7 +19,6 @@ public class Skill {
 	@NotBlank
 	private String category;
 	
-	@NotBlank
 	@Min(value=1)
 	private int priority;
 	
