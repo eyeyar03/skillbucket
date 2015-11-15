@@ -21,7 +21,7 @@
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
-	<property name="basename" value="com.skillbucket.messages.messages">
+	<property name="basename" value="properties/messages">
 	</property>
 	</bean>
 </beans>
