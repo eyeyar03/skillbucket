@@ -120,7 +120,7 @@ function checkPasswordsMatch() {
 			checkPasswords.messageDiv.addClass("alert-success");
 			checkPasswords.messageDiv.removeClass("alert-danger");
 		} else {
-			checkPasswords.messageDiv.text("<fmt:message key='Matchedpasswords.user.password' />").append(checkPasswords.timesGlyph);
+			checkPasswords.messageDiv.text("<fmt:message key='Unmatchedpasswords.user.password' />").append(checkPasswords.timesGlyph);
 			checkPasswords.messageDiv.addClass("alert-danger");
 			checkPasswords.messageDiv.removeClass("alert-success");
 		}
