@@ -55,7 +55,7 @@
 									<c:out value="${username}"></c:out><span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="<c:url value='/accountsettings'/>">My Account</a></li>
+									<li><a href="#">My Account</a></li>
 									<sec:authorize access="hasRole('ADMIN')">
 										<li><a href="<c:url value='/admin'/>">Admin</a></li>
 									</sec:authorize>
@@ -81,6 +81,7 @@
 			</nav>
 
 		</div>
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src='<c:url value="/resources/js/header.js" />'></script>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="<c:url value="/resources/js/bootstrap.min.js"/>" ></script>
+<script src="<c:url value="/resources/js/header.js"/>" ></script>

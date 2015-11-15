@@ -1,6 +1,59 @@
 body {
   padding-top: 70px;
 }
+div.homepage {
+	padding-bottom: 40px;
+  	color: #5a5a5a;
+}
 #passwordmatch {
 	margin-top: 10px;
+}
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+}
+.featurerow .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.featurerow {
+	height: 500px;
+	padding-top: 100px;
+  	overflow: hidden;
+}
+.actualform {
+	padding: 15px;
+}
+.skills {
+	padding-bottom:40px;
+}
+@media (min-width: 768px) {
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .featurette-heading {
+    font-size: 50px;
+  }
+  .main-heading {
+    font-size: 50px;
+  }
+}
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px; 
+  }
+  .main-heading {
+	margin-top: 80px; 
+	padding-bottom: 20px;
+  }
 }

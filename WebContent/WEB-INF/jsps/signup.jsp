@@ -7,18 +7,19 @@
 	<c:param name="title">Sign up - Skill Bucket</c:param>
 </c:import>
 
+<div class="container">
 	<div class="row">
-		<div class="col-sm-offset-3 col-sm-6 jumbotron">
+		<div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+			<c:url value="/dosignup" var="doSignUpUrl"/>
+			<sf:form id="signupform" modelAttribute="user" method="post" action="${doSignUpUrl}"
+				class="form-horizontal actualform" role="form">
+				<p class="lead">Join Skill Bucket today.</p>
 				<c:if test="${errorMsg != null}">
 					<div class="alert alert-danger">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						<strong>Oops!</strong> <c:out value="${errorMsg}" /> 
 					</div>
 				</c:if>
-				<p class="lead">Join Skill Bucket today.</p>
-			<c:url value="/dosignup" var="doSignUpUrl"/>
-			<sf:form id="signupform" modelAttribute="user" method="post" action="${doSignUpUrl}"
-				class="form-horizontal" role="form">
 				<div class="form-group">
 					<div class="col-sm-12">
 						<sf:input type="text" name="firstName" path="firstName" class="form-control" 
