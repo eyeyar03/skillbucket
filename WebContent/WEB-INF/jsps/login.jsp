@@ -19,12 +19,12 @@
 				</c:if>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="text" class="form-control" name="username" placeholder="Username">
+						<input type="text" class="form-control" name="username" placeholder="Username" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="password" class="form-control" name="password" placeholder="Password">
+						<input type="password" class="form-control" name="password" placeholder="Password" required>
 					</div>
 				</div>
 				<div class="form-group">

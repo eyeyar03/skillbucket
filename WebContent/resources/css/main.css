@@ -30,8 +30,21 @@ div.homepage {
 	padding: 15px;
 }
 .skills {
-	padding-bottom:40px;
+	min-height: 600px;
 }
+footer {
+	margin-top:40px;
+}
+#sortable { 
+	list-style-type: none; 
+}
+.ui-sortable-placeholder {
+	border: 3px dashed #aaa;
+	height: 100px;
+	width: 100%;
+	background: #ccc;
+}
+
 @media (min-width: 768px) {
   .navbar-wrapper .container {
     padding-right: 15px;
@@ -50,7 +63,7 @@ div.homepage {
 }
 @media (min-width: 992px) {
   .featurette-heading {
-    margin-top: 120px; 
+    margin-top: 100px; 
   }
   .main-heading {
 	margin-top: 80px; 
