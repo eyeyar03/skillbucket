@@ -38,7 +38,6 @@ public class SkillController {
 	
 	@Autowired
 	public void setUsersService(UsersServiceImpl usersService) {
-		System.out.println("Autowiring UsersService");
 		this.usersService = usersService;
 	}
 

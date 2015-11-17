@@ -4,7 +4,7 @@
 	<c:param name="title">Home - Skill Bucket</c:param>
 </c:import>
 
-<div class="container">
+<div class="container maincontainer">
 	<div class="homepage">
 		
 		<div class="row featurerow jumbotron">
@@ -47,11 +47,6 @@
 		</div>
 		
 		<hr class="featurette-divider">
-		
-		<footer>
-	        <p class="pull-right"><a href="#">Back to top</a></p>
-	        <p>&copy; 2015 Skill Bucket &middot; <a href="#">About</a> </p> 
-	    </footer>
 		
 	</div>
 </div> 

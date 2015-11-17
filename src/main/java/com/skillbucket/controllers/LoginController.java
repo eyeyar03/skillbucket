@@ -33,7 +33,6 @@ public class LoginController {
 
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
 	public String doLogout(HttpSession session) {
-		session.invalidate();
 		return "home";
 	}
 

@@ -4,7 +4,7 @@
 	<c:param name="title">Skill Bucket</c:param>
 </c:import>
 
-<div class="container">
+<div class="container maincontainer">
 	<div class="row">
 	
 		<div class="col-sm-offset-2 col-sm-8">

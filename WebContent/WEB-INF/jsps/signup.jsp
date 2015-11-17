@@ -7,7 +7,7 @@
 	<c:param name="title">Sign up - Skill Bucket</c:param>
 </c:import>
 
-<div class="container">
+<div class="container maincontainer">
 	<div class="row">
 		<div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 			<c:url value="/dosignup" var="doSignUpUrl"/>
@@ -80,6 +80,8 @@
 		</div> <!-- .jumbotron -->
 	</div> <!-- .row -->
 </div> <!-- .container -->
+
+<c:import url="footer.jsp" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js'/>" ></script>

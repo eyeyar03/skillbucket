@@ -4,7 +4,7 @@
 	<c:param name="title">Log in - Skill Bucket</c:param>
 </c:import>
 
-<div class="container">
+<div class="container maincontainer">
 	<div class="row">
 		<div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
 			
@@ -35,7 +35,7 @@
 				</div>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
-			<div class="text-center"><a href='<c:url value="/signup"/>'>Create account</a></div>
+			<div class="text-center">Don't have an account yet? <a href='<c:url value="/signup"/>'>Create an account</a></div>
 		</div>
 	</div>
 </div>

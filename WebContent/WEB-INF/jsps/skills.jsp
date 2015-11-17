@@ -7,7 +7,7 @@
 
 <input id="updateAttempt" type="hidden" value="${updateAttempt}">
 
-<div class="container">
+<div class="container maincontainer">
 	<div class="page-header">
 	  <h1><c:out value="${user.firstName}"/> <c:out value="${user.lastName}"/> <small><c:out value="${user.title}"/></small></h1>
 	</div>
@@ -38,7 +38,7 @@
 										<c:out value="${skill.name}"></c:out>
 									</h2>
 								</div>
-								<table class="table table-condensed">
+								<table class="table">
 									<tr>
 										<td><small>Level</small></td>
 										<td><c:out value="${skill.level}"></c:out></td>
@@ -168,11 +168,6 @@
 	
 	<hr class="featurette-divider">
 	
-	<footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2015 Skill Bucket &middot; <a href="#">About</a> </p> 
-	</footer>
-	    
 </div>
 <script src="<c:url value="/resources/js/jquery-ui.min.js"/>" ></script>
 <script>

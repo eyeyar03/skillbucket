@@ -5,7 +5,7 @@
 	<c:param name="title">Add Skill - Skill Bucket</c:param>
 </c:import>
 
-<div class="container">
+<div class="container maincontainer">
 	<div class="row">
 	
 		<div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6">
