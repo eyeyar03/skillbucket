@@ -51,7 +51,7 @@
 				</div>
 	
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="name">Category:</label>
+					<label class="control-label col-sm-2" for="category">Category:</label>
 					<div class="col-sm-10">
 						<sf:input type="text" class="form-control" name="category"
 							placeholder="Enter category" path="category" required="required"/><br/>
@@ -60,7 +60,7 @@
 				</div>
 	
 				<div class="form-group">
-					<label class="control-label col-sm-2" for="name">Priority:</label>
+					<label class="control-label col-sm-2" for="priority">Priority:</label>
 					<div class="col-sm-10">
 						<sf:input type="number" class="form-control" name="priority"
 							placeholder="Enter priority rank, 1 being highest" path="priority" 

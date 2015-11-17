@@ -29,7 +29,7 @@ public class SkillDaoImpl implements SkillDao {
 	public List<Skill> getSkills(String username) {
 		MapSqlParameterSource params = new MapSqlParameterSource("username", username);
 		
-		return jdbc.query("select * from skill where username = :username", params, new RowMapper<Skill>() {
+		return jdbc.query("select * from skill where username = :username order by priority", params, new RowMapper<Skill>() {
 
 			@Override
 			public Skill mapRow(ResultSet rs, int arg1) throws SQLException {
@@ -51,6 +51,23 @@ public class SkillDaoImpl implements SkillDao {
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(skill);
 		
 		return jdbc.update("insert into skill (name, level, category, priority, username) values (:name, :level, :category, :priority, :username)", params);
+	}
+
+	@Override
+	public boolean update(Skill skill) {
+		
+		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(skill);
+		
+		return jdbc.update("update skill set name = :name, level = :level, category = :category, priority = :priority where id = :id", params) > 0;
+	}
+
+	@Override
+	public boolean delete(Skill skill) {
+		MapSqlParameterSource params = new MapSqlParameterSource();
+		params.addValue("username", skill.getUsername());
+		params.addValue("id", skill.getId());
+		
+		return jdbc.update("delete from skill where id = :id and username = :username", params) > 0;
 	}
 
 }

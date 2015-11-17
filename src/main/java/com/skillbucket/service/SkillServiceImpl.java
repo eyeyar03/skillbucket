@@ -3,7 +3,6 @@ package com.skillbucket.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 
 import com.skillbucket.dao.SkillDao;
@@ -30,6 +29,17 @@ public class SkillServiceImpl implements SkillService{
 		skill.setUsername(username);
 		int added = skillDao.add(skill);
 		return added == 1;
+	}
+
+	@Override
+	public boolean update(Skill skill) {
+		return skillDao.update(skill);
+	}
+
+	@Override
+	public boolean delete(Skill skill) {
+		System.out.println("Delete skill :" + skill.toString());
+		return skillDao.delete(skill);
 	}
 
 }

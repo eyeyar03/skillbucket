@@ -9,5 +9,9 @@ public interface SkillService {
 	public List<Skill> getSkills(String username);
 
 	public boolean add(Skill skill, String username);
+
+	public boolean update(Skill skill);
+
+	public boolean delete(Skill skill);
 	
 }
