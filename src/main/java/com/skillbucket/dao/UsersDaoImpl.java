@@ -1,8 +1,12 @@
 package com.skillbucket.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -35,6 +39,29 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public boolean exists(String username) {
 		return jdbc.queryForObject("select count(*) from users where username = :username", new MapSqlParameterSource("username", username), Integer.class) > 0;
+	}
+
+	@Override
+	public User getUser(String username) {
+		
+		return jdbc.queryForObject("select * from users where username = :username"
+				, new MapSqlParameterSource("username", username.trim())
+				, new RowMapper<User>() {
+					@Override
+					public User mapRow(ResultSet rs, int arg1) throws SQLException {
+						if (rs == null || rs.wasNull()) {
+							return null;
+						}
+						User user = new User();
+						user.setUsername(rs.getString("username"));
+						user.setEmail(rs.getString("email"));
+						user.setFirstName(rs.getString("first_name"));
+						user.setLastName(rs.getString("last_name"));
+						user.setTitle(rs.getString("title"));
+						
+						return user;
+					}
+		});
 	}
 
 }

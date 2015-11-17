@@ -8,6 +8,9 @@
 <input id="updateAttempt" type="hidden" value="${updateAttempt}">
 
 <div class="container">
+	<div class="page-header">
+	  <h1><c:out value="${user.firstName}"/> <c:out value="${user.lastName}"/> <small><c:out value="${user.title}"/></small></h1>
+	</div>
 	<div class="row skills">
 		<div class="col-sm-6">
 			<div class="row">
@@ -35,7 +38,7 @@
 										<c:out value="${skill.name}"></c:out>
 									</h2>
 								</div>
-								<table class="table">
+								<table class="table table-condensed">
 									<tr>
 										<td><small>Level</small></td>
 										<td><c:out value="${skill.level}"></c:out></td>

@@ -19,19 +19,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skillbucket.model.Constants;
 import com.skillbucket.model.Skill;
+import com.skillbucket.model.User;
 import com.skillbucket.service.SkillService;
 import com.skillbucket.service.SkillServiceImpl;
+import com.skillbucket.service.UsersService;
+import com.skillbucket.service.UsersServiceImpl;
 
 @Controller
 public class SkillController {
 	
 	private SkillService skillService;
+	private UsersService usersService;
 	
 	@Autowired
 	public void setSkillService(SkillServiceImpl skillService) {
 		this.skillService = skillService;
 	}
 	
+	@Autowired
+	public void setUsersService(UsersServiceImpl usersService) {
+		System.out.println("Autowiring UsersService");
+		this.usersService = usersService;
+	}
+
 	@RequestMapping("/addskill")
 	public String addSkill(Model model) {
 		
@@ -135,7 +145,7 @@ public class SkillController {
 		return mv;
 	}
 
-	@RequestMapping(value="/skills")
+	@RequestMapping("/skills")
 	public String showSkills(Model model, HttpSession session) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -143,13 +153,26 @@ public class SkillController {
 	    session.setAttribute("username", username);
 	    System.out.println("Logged in username : " + username);
 	    
+	    User user = getUser(username);
+	    if (user == null) {
+	    	session.invalidate();
+	    	auth.setAuthenticated(false);
+	    	return "home";
+	    }
+	    session.setAttribute("user", user);
+	    
 		List<Skill> skills = skillService.getSkills(username);
-
+		
 		model.addAttribute("skills", skills);
 		model.addAttribute("updateskill", new Skill()); //pass a skill object to back the model attribute for update functionality
 		model.addAttribute("levels", Constants.LEVELS);
 		
 		return "skills";
 	}
+
+	private User getUser(String username) {
+		return usersService.getUser(username);
+	}
+	
 
 }

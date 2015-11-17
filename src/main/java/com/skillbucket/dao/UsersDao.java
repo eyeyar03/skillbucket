@@ -8,4 +8,6 @@ public interface UsersDao {
 
 	public boolean exists(String username);
 
+	public User getUser(String username);
+
 }

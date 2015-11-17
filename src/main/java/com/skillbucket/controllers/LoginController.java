@@ -1,5 +1,6 @@
 package com.skillbucket.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,8 @@ public class LoginController {
 	}
 
 	@RequestMapping( value = "/logout", method = RequestMethod.GET )
-	public String doLogout() {
+	public String doLogout(HttpSession session) {
+		session.invalidate();
 		return "home";
 	}
 
