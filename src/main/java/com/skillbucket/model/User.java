@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class User {
 
 	@NotBlank
-	@Size(min=8, max=15)
+	@Size(min=5, max=15)
 	@Pattern(regexp="^\\w{8,}$")
 	private String username;
 	

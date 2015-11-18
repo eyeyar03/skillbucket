@@ -89,7 +89,7 @@
 											<div class="col-sm-10">
 												<sf:input type="text" class="form-control" name="name" path="name" 
 												value="${skill.name}" required="required"/><br/>
-												<sf:errors path="name" cssClass="alert-danger"></sf:errors>
+												<sf:errors path="name" cssClass="text-danger"></sf:errors>
 											</div>
 										</div>
 							
@@ -103,7 +103,7 @@
 														<sf:option value="${option}">${option}</sf:option>
 													</c:forEach>
 												</sf:select><br/>
-												<sf:errors path="level" cssClass="alert-danger"></sf:errors>
+												<sf:errors path="level" cssClass="text-danger"></sf:errors>
 											</div>
 										</div>
 							
@@ -112,7 +112,7 @@
 											<div class="col-sm-10">
 												<sf:input type="text" class="form-control" name="category"
 													path="category" value="${skill.category}" required="required"/><br/>
-												<sf:errors path="category" cssClass="alert-danger"></sf:errors>
+												<sf:errors path="category" cssClass="text-danger"></sf:errors>
 											</div>
 										</div>
 										<div class="form-group">
@@ -120,7 +120,7 @@
 											<div class="col-sm-10">
 												<sf:input type="number" class="form-control" name="priority"
 													path="priority" value="${skill.priority}" required="required"/><br/>
-												<sf:errors path="priority" cssClass="alert-danger"></sf:errors>
+												<sf:errors path="priority" cssClass="text-danger"></sf:errors>
 											</div>
 										</div>
 								      

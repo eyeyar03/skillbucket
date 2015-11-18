@@ -40,10 +40,10 @@
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<sec:authorize access="!isAuthenticated()">
-							<li class="active" id="nav-home-label"><a href="<c:url value='/'/>">Home</a></li>
+							<li id="nav-home-label"><a href="<c:url value='/'/>">Home</a></li>
 						</sec:authorize>
 						<sec:authorize access="isAuthenticated()">
-							<li id="nav-skills-label"><a href="<c:url value='/skills'/>">Skills</a></li>
+							<li class="active" id="nav-skills-label"><a href="<c:url value='/skills'/>">Skills</a></li>
 						</sec:authorize>
 					</ul>
 					
@@ -72,7 +72,7 @@
 						<sec:authorize access="!isAuthenticated()">
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="<c:url value='/login'/>">Log in</a></li>
-								<li><a href="<c:url value='/signup'/>">Sign up</a></li>
+								<li class="active" ><a href="<c:url value='/signup'/>">Sign up</a></li>
 							</ul>
 						</sec:authorize>
 					</ul>

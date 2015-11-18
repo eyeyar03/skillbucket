@@ -33,7 +33,7 @@
 					<div class="col-sm-10">
 						<sf:input type="text" class="form-control" name="name" path="name" 
 						placeholder="Enter skill. e.g. MS Excel, Public Speaking, HTML" required="required"/><br/>
-						<sf:errors path="name" cssClass="alert-danger"></sf:errors>
+						<sf:errors path="name" cssClass="text-danger"></sf:errors>
 					</div>
 				</div>
 	
@@ -46,7 +46,7 @@
 								<sf:option value="${option}">${option}</sf:option>
 							</c:forEach>
 						</sf:select><br/>
-						<sf:errors path="level" cssClass="alert-danger"></sf:errors>
+						<sf:errors path="level" cssClass="text-danger"></sf:errors>
 					</div>
 				</div>
 	
@@ -55,7 +55,7 @@
 					<div class="col-sm-10">
 						<sf:input type="text" class="form-control" name="category"
 							placeholder="Enter category" path="category" required="required"/><br/>
-						<sf:errors path="category" cssClass="alert-danger"></sf:errors>
+						<sf:errors path="category" cssClass="text-danger"></sf:errors>
 					</div>
 				</div>
 	
@@ -65,7 +65,7 @@
 						<sf:input type="number" class="form-control" name="priority"
 							placeholder="Enter priority rank, 1 being highest" path="priority" 
 							required="required"/><br/>
-						<sf:errors path="priority" cssClass="alert-danger"></sf:errors>
+						<sf:errors path="priority" cssClass="text-danger"></sf:errors>
 					</div>
 				</div>
 	
