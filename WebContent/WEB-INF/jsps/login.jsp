@@ -29,6 +29,15 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
+						<div class="checkbox">
+						    <label>
+						      <input type="checkbox" name="remember-me"> Remember me
+						   	</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
 						<button type="submit" class="btn btn-primary btn-md btn-block">Log
 							in</button>
 					</div>

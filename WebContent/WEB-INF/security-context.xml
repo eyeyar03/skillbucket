@@ -18,7 +18,8 @@
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource"
 				authorities-by-username-query="select username, authority from authorities where binary username = ?"
-				users-by-username-query="select username, password, enabled from users where binary username = ?" />
+				users-by-username-query="select username, password, enabled from users where binary username = ?"
+				id="jdbcAuth" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 
@@ -41,5 +42,7 @@
 			always-use-default-target="true" password-parameter="password" username-parameter="username" />
 		<security:logout invalidate-session="true" logout-url="/logout"
 			logout-success-url="/" delete-cookies="JSESSIONID" />
+		<security:remember-me user-service-ref="jdbcAuth"
+			key="skillbucketkey" />
 	</security:http>
 </beans>
