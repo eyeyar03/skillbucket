@@ -11,7 +11,10 @@
 	<context:annotation-config></context:annotation-config>
 	<context:component-scan base-package="com.skillbucket.dao"></context:component-scan>
 	
-	<jee:jndi-lookup jndi-name="jdbc/MySQLDS" id="dataSource"
+	<beans profile="prod">
+		<jee:jndi-lookup jndi-name="jdbc/MySQLDS" id="dataSource"
 		expected-type="javax.sql.DataSource">
 	</jee:jndi-lookup>
+	</beans>
+	
 </beans>
