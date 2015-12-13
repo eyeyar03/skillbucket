@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +28,8 @@ import com.skillbucket.service.UsersServiceImpl;
 
 @Controller
 public class SkillController {
+	
+	private Logger logger = Logger.getLogger(this.getClass());
 	
 	private SkillService skillService;
 	private UsersService usersService;
@@ -54,16 +57,16 @@ public class SkillController {
 	
 	@RequestMapping( value = "/doaddskill", method = RequestMethod.POST )
 	public ModelAndView doAddSkill(ModelAndView mv, HttpSession session, @Valid @ModelAttribute("skill") Skill skill, BindingResult result) {
-		System.out.println(skill);
+		logger.info(skill);
 		
 		mv = new ModelAndView("addskill");
 		String errorMsg = "";
 		String successMsg = "";
 		
 		if (result.hasErrors()) {
-			System.out.println("Form does not validate.");
+			logger.info("Form does not validate.");
 		} else {
-			System.out.println("Form validated.");
+			logger.info("Form validated.");
 
 			boolean added = skillService.add(skill, (String) session.getAttribute("username"));
 			if (added) {
@@ -84,7 +87,7 @@ public class SkillController {
 	@RequestMapping(value="/skills", params="update", method=RequestMethod.POST)
 	public ModelAndView updateSkill(ModelAndView mv, HttpSession session, @Valid @ModelAttribute("updateskill") Skill updateskill, BindingResult result) {
 		updateskill.setUsername((String) session.getAttribute("username"));
-		System.out.println(updateskill);
+		logger.info(updateskill);
 		
 	    mv = new ModelAndView("skills");
 	    
@@ -93,7 +96,7 @@ public class SkillController {
 		String successMsg = "";
 		
 	    if (!result.hasErrors()) {
-	    	System.out.println("Form validates");
+	    	logger.info("Form validates");
 	    	boolean updated = skillService.update(updateskill);
 	    	if (updated) {
 	    		successMsg = "Your skill has been updated.";
@@ -101,7 +104,7 @@ public class SkillController {
 	    		errorMsg = "There was a problem updating your skill.";
 	    	}
 	    } else {
-	    	System.out.println("Form does not validate");
+	    	logger.info("Form does not validate");
 	    	errorUpdateMsg = "There was a problem updating your skill. Please check your skill details.";
 			mv.getModel().put("updateAttempt", "true");
 	    }
@@ -119,7 +122,7 @@ public class SkillController {
 
 	@RequestMapping( value = "/skills", params="id" )
 	public ModelAndView deleteSkill(ModelAndView mv, HttpSession session, @RequestParam int id) {
-		System.out.println(id);
+		logger.info("Deleting skill with ID: " + id);
 		
 		mv = new ModelAndView("skills");
 		
@@ -131,7 +134,7 @@ public class SkillController {
 		if (!deleted) {
 			mv.getModel().put("errorMsg", "There was an error removing that skill.");
 		} else {
-			System.out.println("Skill deleted");
+			logger.info("Skill deleted");
 			mv.getModel().put("successMsg", "Your skill has been removed from your list.");
 		}
 		
@@ -150,7 +153,7 @@ public class SkillController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    String username = auth.getName(); //get logged in username
 	    session.setAttribute("username", username);
-	    System.out.println("Logged in username : " + username);
+	    logger.info("Logged in username : " + username);
 	    
 	    User user = getUser(username);
 	    if (user == null) {
