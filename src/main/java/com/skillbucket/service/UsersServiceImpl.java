@@ -1,5 +1,8 @@
 package com.skillbucket.service;
 
+import java.util.List;
+import java.util.zip.DataFormatException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -27,7 +30,7 @@ public class UsersServiceImpl implements UsersService {
 			user.setEnabled(true);
 		
 			usersDao.add(user);
-		} catch (DataAccessException e) {
+		} catch (DataAccessException | DataFormatException e) {
 			return false;
 		}
 		
@@ -42,6 +45,11 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public User getUser(String username) {
 		return usersDao.getUser(username);
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return usersDao.getAllUsers();
 	}
 	
 }

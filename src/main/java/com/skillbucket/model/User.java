@@ -38,6 +38,18 @@ public class User {
 
 	}
 
+	public User(String username, String password, String email, String firstName, String lastName, String title,
+			String authority, boolean enabled) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.title = title;
+		this.authority = authority;
+		this.enabled = enabled;
+	}
+
 	public User(String username, String password, String authority, boolean enabled, String firstName,
 			String lastName) {
 		this.username = username;
@@ -113,10 +125,54 @@ public class User {
 	}
 
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (authority == null) {
+			if (other.authority != null)
+				return false;
+		} else if (!authority.equals(other.authority))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (enabled != other.enabled)
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", email=" + email + ", authority=" + authority
 				+ ", enabled=" + enabled + ", firstName=" + firstName + ", lastName=" + lastName + ", title=" + title
 				+ "]";
 	}
-
+	
 }
